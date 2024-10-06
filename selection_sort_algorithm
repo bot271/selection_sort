@@ -1,0 +1,35 @@
+#include <iostream>
+
+template<typename T>
+void swap(T &, T &);
+template<typename T>
+void selectionSort(T *, int);
+
+
+template<typename T>
+void swap(T & a, T & b)
+{
+    T temp = a;
+    a = b;
+    b = temp;
+}
+
+template<typename T>
+void selectionSort(T * a, int n)
+{
+    for (int i = 0; i < n - 1; ++i)
+    {
+        int max_ind = 0;
+        bool sorted = true;
+        for (int j = 1; j < n - i; ++j)
+        {
+            if (a[max_ind] < a[j])
+                max_ind = j;
+            else
+                sorted = false;
+        }
+        swap(a[n - 1 - i], a[max_ind]);
+        if (sorted)
+            break;
+    }
+}
